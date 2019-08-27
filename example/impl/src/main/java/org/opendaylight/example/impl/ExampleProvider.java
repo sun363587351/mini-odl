@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 public class ExampleProvider implements BindingAwareProvider, AutoCloseable {
 
     private static final Logger LOG = LoggerFactory.getLogger(ExampleProvider.class);
-    private RpcRegistration<ExampleService> exampleervice;
+    private RpcRegistration<ExampleService> exampleService;
 
     @Override
     public void onSessionInitiated(ProviderContext session) {

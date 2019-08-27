@@ -10,6 +10,8 @@ package org.opendaylight.example.impl;
 
 import java.util.concurrent.Future;
 
+import com.google.common.util.concurrent.ListenableFuture;
+
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.example.rev190827.ExampleService;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.example.rev190827.ExampleInput;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.example.rev190827.ExampleOutput;
@@ -21,7 +23,7 @@ import org.opendaylight.yangtools.yang.common.RpcResultBuilder;
 public class ExampleImpl implements ExampleService {
 
     @Override
-    public Future<RpcResult<ExampleOutput>> exampleWorld(ExampleInput input) {
+    public ListenableFuture<RpcResult<ExampleOutput>> example(ExampleInput input) {
         ExampleOutputBuilder exampleBuilder = new ExampleOutputBuilder();
         exampleBuilder.setGreeting("Example " + input.getName());
         return RpcResultBuilder.success(exampleBuilder.build()).buildFuture();
