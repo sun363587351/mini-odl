@@ -3,7 +3,21 @@ module example {
     namespace "urn:opendaylight:params:xml:ns:yang:example";
     prefix "example";
 
-    revision "2018-05-17" { // TODO change revision to date of model creation
+    revision "2019-08-27" { // TODO change revision to date of model creation
         description "Initial revision of example model";
     }
+
+    rpc example {
+        input {
+            leaf name {
+                type string;
+            }
+        }
+        output {
+            leaf greeting {
+                type string;
+            }
+        }
+    }
+    
 }
