@@ -8,8 +8,6 @@
 
 package org.opendaylight.example.impl;
 
-import java.util.concurrent.Future;
-
 import com.google.common.util.concurrent.ListenableFuture;
 
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.example.rev190827.ExampleService;
