@@ -1,0 +1,1 @@
+https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/archetypes/opendaylight-startup-archetype/1.1.1/opendaylight-startup-archetype-1.1.1-sources.jar

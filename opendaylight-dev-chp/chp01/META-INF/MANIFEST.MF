@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1566975029516
+Build-Jdk: 1.8.0_202
+Built-By: sunc
+Bundle-Activator: org.opendaylight.controller.samples.sunc.Activator
+Bundle-ManifestVersion: 2
+Bundle-Name: sunc
+Bundle-SymbolicName: org.opendaylight.controller.samples.sunc.chp01
+Bundle-Version: 0.0.1.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.opendaylight.controller.samples.sunc;uses:="org.apac
+ he.felix.dm,org.opendaylight.controller.sal.core,org.opendaylight.contr
+ oller.sal.packet";version="0.0.1"
+Import-Package: org.apache.felix.dm;version="[3.0,4)",org.opendaylight.c
+ ontroller.sal.action;version="[0.7,1)",org.opendaylight.controller.sal.
+ core;version="[0.7,1)",org.opendaylight.controller.sal.flowprogrammer;v
+ ersion="[0.7,1)",org.opendaylight.controller.sal.match;version="[0.7,1)
+ ",org.opendaylight.controller.sal.packet;version="[0.7,1)",org.opendayl
+ ight.controller.sal.utils;version="[0.7,1)",org.opendaylight.controller
+ .switchmanager;version="[0.7,1)",org.slf4j;version="[1.7,2)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.6))"
+Tool: Bnd-4.2.0.201903051501
