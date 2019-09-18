@@ -8,6 +8,9 @@
 
 package org.opendaylight.example.impl;
 
+import org.opendaylight.controller.md.sal.binding.api.DataBroker;
+import org.opendaylight.controller.sal.binding.api.RpcProviderRegistry;
+
 import org.opendaylight.controller.sal.binding.api.BindingAwareBroker.ProviderContext;
 import org.opendaylight.controller.sal.binding.api.BindingAwareBroker.RpcRegistration;
 import org.opendaylight.controller.sal.binding.api.BindingAwareProvider;
@@ -15,22 +18,31 @@ import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.example.
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ExampleProvider implements BindingAwareProvider, AutoCloseable {
-
+public class ExampleProvider {
+ 
     private static final Logger LOG = LoggerFactory.getLogger(ExampleProvider.class);
-    private RpcRegistration<ExampleService> exampleService;
-
-    @Override
-    public void onSessionInitiated(ProviderContext session) {
-        LOG.info("ExampleProvider Session Initiated");
-        exampleService = session.addRpcImplementation(ExampleService.class, new ExampleImpl());
+    private final DataBroker dataBroker;
+    private final RpcProviderRegistry rpcProviderRegistry;
+    private RpcRegistration<ExampleService> serviceRegistration;
+ 
+    public ExampleProvider(final DataBroker dataBroker, RpcProviderRegistry rpcProviderRegistry) {
+        this.dataBroker = dataBroker;
+        this.rpcProviderRegistry = rpcProviderRegistry;
     }
-
-    @Override
-    public void close() throws Exception {
-        LOG.info("ExampleProvider Closed");
-        if (exampleService != null) {
-            exampleService.close();
-        }
+ 
+    /**
+     * Method called when the blueprint container is created.
+     */
+    public void init() {
+        serviceRegistration = rpcProviderRegistry.addRpcImplementation(ExampleService.class, new ExampleImpl());
+        LOG.info("helloProvider Session Initiated");
+    }
+ 
+    /**
+     * Method called when the blueprint container is destroyed.
+     */
+    public void close() {
+        serviceRegistration.close();
+        LOG.info("helloProvider Closed");
     }
 }
